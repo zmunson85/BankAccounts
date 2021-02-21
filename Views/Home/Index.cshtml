@@ -1,0 +1,40 @@
+﻿@model Container
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+</head>
+<body>
+    <header>
+        <h1>Register to this Cool Site!</h1>
+        <a href="/login">Login</a>
+    </header>
+    <main>
+        <form asp-action="Register" asp-controller="Home" method="POST">
+            <span asp-validation-for="User.FirstName" class="error"></span>
+            <label asp-for="User.FirstName"></label>
+            <input asp-for="User.FirstName">
+            <br>
+            <span asp-validation-for="User.LastName" class="error"></span>
+            <label asp-for="User.LastName"></label>
+            <input asp-for="User.LastName">
+            <br>
+            <span asp-validation-for="User.Email" class="error"></span>
+            <label asp-for="User.Email"></label>
+            <input asp-for="User.Email">
+            <br>
+            <span asp-validation-for="User.Password" class="error"></span>
+            <label asp-for="User.Password"></label>
+            <input asp-for="User.Password">
+            <br>
+            <span asp-validation-for="User.Confirm" class="error"></span>
+            <label asp-for="User.Confirm"></label>
+            <input asp-for="User.Confirm">
+            <br>
+            <button>Sign Up Now!</button>
+        </form>
+    </main>
+</body>
+</html>

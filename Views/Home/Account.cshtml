@@ -1,0 +1,48 @@
+@model Container
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+</head>
+
+<body>
+    <header>
+        <a href="/logout">Logout</a>
+        <h2>Welcome @Model.User.FirstName @Model.User.LastName</h2>
+        <span>Current balance: $@Model.User.Balance.ToString("0.00")</span>
+    </header>
+    <main>
+        <form asp-action="Transaction" asp-controller="Home" method="POST">
+            <h3>Deposit/Withdraw</h3>
+            <span>@ViewBag.Error</span>
+            <label asp-for="OneTransaction.Amount"></label>
+            <input asp-for="OneTransaction.Amount" type="number">
+            <button>Submit</button>
+        </form>
+        <section>
+            <h2>Recent Transactions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Transaction transaction in Model.AllTransactions)
+                    {
+                        <tr>
+                            <td>$@transaction.Amount.ToString("0.00")</td>
+                            <td>@transaction.CreatedAt.ToString("MMM d, yyyy: h:mm tt")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>
