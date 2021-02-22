@@ -13,12 +13,12 @@
     <main>
         <form asp-action="Login" asp-controller="Home" method="POST">
             <div class="form-control-lg">    
-                <span asp-validation-for="UserLogin.LoginEmail" class="errors"></span>
+                <span style="color: red;" asp-validation-for="UserLogin.LoginEmail" class="errors"></span>
                 <label asp-for="UserLogin.LoginEmail"></label>
                 <input type="email" asp-for="UserLogin.LoginEmail">
             </div>
             <div class="form-control-lg">    
-                <span asp-validation-for="UserLogin.LoginPassword" class="errors"></span>
+                <span style="color: red;" asp-validation-for="UserLogin.LoginPassword" class="errors"></span>
                 <label asp-for="UserLogin.LoginPassword"></label>
                 <input type="password" asp-for="UserLogin.LoginPassword">
                 <a style="margin-left: 2%;" href="/">Need To Register?</a>
