@@ -108,7 +108,7 @@ namespace BankAccounts.Controllers
         {
             if (Form.OneTransaction.Amount == 0)
             {
-                return RedirectToAction("Success", new { id = HttpContext.Session.GetInt32("CurrentUser"), error = "Please include an amount" });
+                return RedirectToAction("Success", new { id = HttpContext.Session.GetInt32("CurrentUser"), error = "Amount needed to continue" });
             }
             if (ModelState.IsValid)
             {
@@ -116,7 +116,7 @@ namespace BankAccounts.Controllers
                 User user = _context.Users.FirstOrDefault(u => u.UserId == (int)userId);
                 if (user.Balance + Form.OneTransaction.Amount < 0)
                 {
-                    return RedirectToAction("Success", new { id = HttpContext.Session.GetInt32("CurrentUser"), error = "You don't have enough mula... Biotch" });
+                    return RedirectToAction("Success", new { id = HttpContext.Session.GetInt32("CurrentUser"), error = "Not Enough Funds To Complete Transaction" });
                 }
                 user.Balance += Form.OneTransaction.Amount;
                 _context.Update(user);

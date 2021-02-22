@@ -9,10 +9,9 @@
 </head>
 
 <body>
-    <header>
-        <a href="/logout">Logout</a>
-        <h2>Welcome @Model.User.FirstName @Model.User.LastName</h2>
-        <span>Current balance: $@Model.User.Balance.ToString("0.00")</span>
+    <header style="display: flex;">
+        <h2>Welcome, @Model.User.FirstName @Model.User.LastName</h2>
+        <span style=" color: green; margin-left: 4%; display: flex;">Current balance: <h5 style="margin-left: 6px;width:150px; border: 2px solid black;">$@Model.User.Balance.ToString("0.00")</h5></span>
     </header>
     <main>
         <form asp-action="Transaction" asp-controller="Home" method="POST">
@@ -21,6 +20,11 @@
             <label asp-for="OneTransaction.Amount"></label>
             <input asp-for="OneTransaction.Amount" type="number">
             <button>Submit</button>
+            @* <h3>Deposit</h3>
+            <span>@ViewBag.Error</span>
+            <label asp-for="OneDeposit.Amount"></label>
+            <input asp-for="OneDeposit.Amount" type="number">
+            <button>Submit</button> *@
         </form>
         <section>
             <h2>Recent Transactions</h2>
@@ -34,15 +38,34 @@
                 <tbody>
                     @foreach (Transaction transaction in Model.AllTransactions)
                     {
-                        <tr>
-                            <td>$@transaction.Amount.ToString("0.00")</td>
+                        if (transaction.Amount >0){
+                            <tr class="deposit">
+                            <td style="color: green;">$@transaction.Amount.ToString("0.00")</td>
                             <td>@transaction.CreatedAt.ToString("MMM d, yyyy: h:mm tt")</td>
                         </tr>
+                        }
+                        else{
+                        <tr class="withdraw">
+                            <td style="color: red;">$@transaction.Amount.ToString("0.00")</td>
+                            <td>@transaction.CreatedAt.ToString("MMM d, yyyy: h:mm tt")</td>
+                        </tr>
+                        }
                     }
                 </tbody>
+                @* <tbody>
+                    @foreach (Deposit deposit in Model.AllDeposits)
+                    {
+                        <tr>
+                            <td>$@deposit.Amount.ToString("0.00")</td>
+                            <td>@deposit.CreatedAt.ToString("MMM d, yyyy: h:mm tt")</td>
+                        </tr>
+                    }
+                </tbody> *@
             </table>
         </section>
     </main>
+    <a style="margin-left: 50%;" href="/logout">Logout</a>
+
 </body>
 
 </html>

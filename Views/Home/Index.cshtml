@@ -9,31 +9,37 @@
 <body>
     <header>
         <h1>Register to this Cool Site!</h1>
-        <a href="/login">Login</a>
     </header>
-    <main>
+    <main style="width:70%;" class="form">
         <form asp-action="Register" asp-controller="Home" method="POST">
-            <span asp-validation-for="User.FirstName" class="error"></span>
-            <label asp-for="User.FirstName"></label>
-            <input asp-for="User.FirstName">
-            <br>
-            <span asp-validation-for="User.LastName" class="error"></span>
-            <label asp-for="User.LastName"></label>
-            <input asp-for="User.LastName">
-            <br>
-            <span asp-validation-for="User.Email" class="error"></span>
-            <label asp-for="User.Email"></label>
-            <input asp-for="User.Email">
-            <br>
-            <span asp-validation-for="User.Password" class="error"></span>
-            <label asp-for="User.Password"></label>
-            <input asp-for="User.Password">
-            <br>
-            <span asp-validation-for="User.Confirm" class="error"></span>
-            <label asp-for="User.Confirm"></label>
-            <input asp-for="User.Confirm">
-            <br>
-            <button>Sign Up Now!</button>
+            <div class="form-control-lg">
+                <span asp-validation-for="User.FirstName" class="error"></span>
+                <label asp-for="User.FirstName"></label>
+                <input type="text" asp-for="User.FirstName">
+                <br>
+            </div>    
+            <div class="form-control-lg">    
+                <span asp-validation-for="User.LastName" class="error"></span>
+                <label asp-for="User.LastName"></label>
+                <input type="text" asp-for="User.LastName">
+            </div>
+            <div class="form-control-lg">    
+                <span asp-validation-for="User.Email" class="error"></span>
+                <label asp-for="User.Email"></label>
+                <input type="email" asp-for="User.Email">
+            </div>
+            <div class="form-control-lg">    
+                <span asp-validation-for="User.Password" class="error"></span>
+                <label asp-for="User.Password"></label>
+                <input type="password" asp-for="User.Password">
+            </div>
+            <div class="form-control-lg">    
+                <span asp-validation-for="User.Confirm" class="error"></span>
+                <label asp-for="User.Confirm"></label>
+                <input type="password" asp-for="User.Confirm">
+                <a style="margin-left: 2%;" href="/login">Already Registerd?</a>
+            </div>
+                <button>Sign Up Now!</button>
         </form>
     </main>
 </body>

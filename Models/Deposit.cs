@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BankAccounts.Models
 {
-    public class Transaction
+    public class Deposit
     {
         [Key]
-        public int TransactionId { get; set; }
+        public int DepositId { get; set; }
 
-        [Required(ErrorMessage = "Amount is required")]
+        [Required(ErrorMessage = "Needs To Be At Least 1 to submit")]
         public decimal Amount { get; set; }
 
         public int UserId { get; set; }

@@ -9,5 +9,9 @@ namespace BankAccounts.Models
         public LoginUser UserLogin { get; set; }
         public Transaction OneTransaction { get; set; }
         public List<Transaction> AllTransactions { get; set; }
+
+        // public Deposit OneDeposit {get; set;}
+
+        // public List<Deposit> AllDeposits {get; set;}
     }
 }
